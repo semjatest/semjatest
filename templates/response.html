@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Response</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-12">
+            <form id="reponseForm">
+                <fieldset id="fieldexecutivesubmission" style="display: none;">
+                    <div>
+                        <p>Form Successfully submitted. Thanks for your response.</p>
+                        <p><a href="#" onclick="returnToForm()">Return to Form</a></p>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static '/js/script.js' %}"></script>
+</body>
+</html>

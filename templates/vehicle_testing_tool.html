@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semja Vehicle Registration Form</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <form id="vehicletestingtool">
+                <div class="row" style="text-align:center">
+                    <img src="{% static '/img/logo.JPG' %}" alt="logo image">
+                    <h3>Vehicle Testing Tool</h3>
+                </div>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">1</span> Vendor Info</legend>
+                    <input type="text" id="vendoremail" name="vendoremail" placeholder="Enter Email" onclick="editEmail1()" required>
+                    <div id="vendordetails">
+                        <div class="flex-container">
+                            <div class="span-item-left">
+                                <span >Vendor Name:</span>
+                                <div>
+                                    <span  id="vendorname"></span>
+                                </div>
+                            </div>
+                            <div class="button-item-right">
+                                <button type="button" class="info-button" onclick="ValidateEmailInfo('{% url 'check_email' %}')">Vendor Info</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">2</span> Field Executive Info</legend>
+                    <input type="text" id="emailfieldexecutive" name="emailfieldexecutive" placeholder="Enter Email" onclick="editEmailFieldExecutive1()" required>
+                    <div id="fieldexecutivedetails">
+                        <div class="flex-container">
+                            <div class="span-item-left">
+                                <span >Field Executive Name:</span>
+                                <div>
+                                    <span  id="fieldexecutivename"></span>
+                                </div>
+                            </div>
+                            <div class="button-item-right">
+                                <button type="button" class="info-button" onclick="FieldExecutiveEmailInfo('{% url 'check_field_executive_email' %}')">Field Executive Info</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                
+
+                <fieldset id="licens" style="display: block;">
+                    <legend><span class="number">3</span>Driving License</legend>
+                    <input type="text" id="drivinglicense" name="drivinglicense"  placeholder="Enter Driving License" onclick="editDrivingLicense1()" required>
+                    <div id="onboardstatus">
+                        <div class="flex-container">
+                            <div class="span-item-left">
+                                <span>OnBoard Status:</span>
+                                <div>
+                                    <span id="licensestatus"></span>
+                                </div>
+                            </div>
+                            <div class="button-item-right">
+                                <button id="licensebutton" class="info-button" type="button" onclick="ValidateDrivingLicense()">License Info</button>
+                            </div>
+                        </div> 
+                    </div>
+                </fieldset>
+
+
+
+
+                <fieldset id="vehiclen" style="display: block;">
+                    <legend><span class="number">4</span>Vehicle Number</legend>
+                    <input type="text" id="vehiclenumber" name="vehiclenumber"  placeholder="Enter Vehicle Number" onclick="editVehicle1()" required>
+                    <div id="currentstatus">
+                        <div class="flex-container">
+                            <div class="span-item-left">
+                                <span>Current Status:</span>
+                                <div>
+                                    <span id="vehiclestatus"></span>
+                                </div>
+                            </div>
+                            <div class="button-item-right">
+                                <button id="vehiclebutton" type="button" class="info-button" onclick="ValidateVehicle()">Get Vehicle Info</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static '/js/script.js' %}"></script>
+</body>
+</html>

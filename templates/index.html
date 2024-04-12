@@ -1,0 +1,54 @@
+<!-- template.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/home_style.css' %}">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <form id="registrationForm">
+                <div class="row" style="text-align:center">
+                    <img src="{% static '/img/logo.JPG' %}" alt="logo image">
+                    <h3>Semja Registration Forms and Tools</h3>
+                </div>
+
+                <fieldset class="fieldset-container">
+                    <div id="executivedetails">
+                        <div class="button-item-right">
+                            <a href="{% url 'vendor_registration_form' %}"><button type="button" style="vertical-align:middle" >Vendor Registration Form</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <div id="executivedetails">
+                        <div class="button-item-right">
+                            <a href="{% url 'vehicle_testing_tool' %}"><button type="button" style="vertical-align:middle" >Vehicle Testing Tool</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <div id="vendordetails">
+                        <div class="button-item-right">
+                            <a href="{% url 'vendor_vehicle_registration_form' %}"><button type="button" style="vertical-align:middle" >Vendor - Vehicle Registration Form</button>
+                        </div>
+                    </div>
+                </fieldset>   
+                <fieldset class="fieldset-container">
+                    <div id="executivedetails">
+                        <div class="button-item-right">
+                            <a href="{% url 'field_executive_vehicle_registration_form' %}"><button type="button" style="vertical-align:middle" >Field Executive - Vehicle Registration Form</button>
+                        </div>
+                    </div>
+                </fieldset> 
+            </form>
+        </div>
+    </div>
+</body>
+</html>

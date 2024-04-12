@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semja Vehicle Registration Form</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-12">
+            <form id="vendorvehicleregistrationForm"> <!-- Corrected form ID -->
+                <div class="row" style="text-align:center">
+                    <img src="{% static '/img/logo.JPG' %}" alt="logo image">
+                    <h3>Vendor Vehicle Registration Form</h3>
+                </div>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">1</span> Vendor Info</legend>
+                    <input type="text" id="vendoremail" name="vendoremail" placeholder="Enter Email" onclick="editEmail()" required>
+                    <div id="vendordetails">
+                        <div class="flex-container">
+                            <div class="span-item-left">
+                                <span>Vendor Name:</span>
+                                <div>
+                                    <span id="vendorname"></span>
+                                </div>
+                            </div>
+                            <div class="button-item-right">
+                                <button type="button" class="info-button" onclick="ValidateEmailInfo('{% url 'check_email' %}')">Check to Next</button> <!-- Check URL tag syntax -->
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                
+
+                <fieldset id="license" style="display: none;">
+                    <legend><span class="number">2</span>Driving License</legend>
+                    <input type="text" id="drivinglicense" name="drivinglicense"  placeholder="Enter Driving License" onclick="editDrivingLicense()" required>
+                    <div id="onboardstatus">
+                        <div class="flex-container">
+                            <div class="span-item-left">
+                                <span>OnBoard Status:</span>
+                                <div>
+                                    <span id="licensestatus"></span>
+                                </div>
+                            </div>
+                            <div class="button-item-right">
+                                <button id="licensebutton" class="info-button" type="button" onclick="ValidateDrivingLicense()">Check to Next</button>
+                            </div>
+                        </div> 
+                    </div>
+                </fieldset>
+
+
+
+
+                <fieldset id="vehicleno" style="display: none;">
+                    <legend><span class="number">3</span>Vehicle Number</legend>
+                    <input type="text" id="vehiclenumber" name="vehiclenumber"  placeholder="Enter Vehicle Number" onclick="editVehicle()" required>
+                    <div id="currentstatus">
+                        <div class="flex-container">
+                            <div class="span-item-left">
+                                <span>Current Status:</span>
+                                <div>
+                                    <span id="vehiclestatus"></span>
+                                </div>
+                            </div>
+                            <div class="button-item-right">
+                                <button id="vehiclebutton" type="button" class="info-button" onclick="ValidateVehicle()">Check to Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+                <fieldset id="selecttype" style="display: none;">
+                    <legend><span class="number">4</span>Vehicle Type</legend>
+                    <select id="job" name="userjob" onchange="showPartnerRegistration()" required>
+                        <option value="">Select Your Vehicle</option>
+                        <option value="auto">Auto</option>
+                        <option value="bike">Bike</option>
+                        <option value="car">Car</option>
+                        <option value="lcv">LCV</option>
+                        <option value="hcv">HCV</option>
+                    </select>
+                </fieldset>
+
+
+                
+                
+                <fieldset id="partnerreg" style="display: none;">
+                    <legend><span class="number">5</span>Partner Name and Contact</legend>
+                    <input type="text" id="partnername" name="partnername" placeholder="Enter Partner Name" required>
+                    <input type="text" id="mobileno" name="mobileno" placeholder="Enter Partner Mobile no" required>
+                    <textarea id="comment" name="comment" placeholder="Any comments"></textarea>
+                    <button id="submitBtn" type="button" onclick="submitvendorvehicleForm(event, '{% url 'update_spreadsheet_vendor_vehicle' %}')">Submit</button>
+                </fieldset> 
+                <fieldset id="vendorvehiclesubmission" style="display: none;">
+                    <div>
+                        <p>Form Successfully submitted. Thanks for your response.</p>
+                        <p><a href="#" onclick="returnToForm()">Return to Form</a></p>
+                    </div>
+                </fieldset> 
+            </form>
+        </div>
+    </div> 
+           
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static '/js/script.js' %}"></script>
+</body>
+</html>

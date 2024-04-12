@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semja Vehicle Registration Form</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <form id="vendorregistrationForm" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row" style="text-align:center">
+                    <img src="{% static '/img/logo.JPG' %}" alt="logo image">
+                    <h3>Vendor Registration Form</h3>
+                </div>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">1</span> Vendor Info</legend>
+                    <input type="text" id="vendoremail" name="vendoremail" placeholder="Enter Email"  required>
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">2</span> Vendor Office Name</legend>
+                    <input type="text" id="vendoroffice" name="vendoroffice" placeholder="Enter Office Name"  required>
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">3</span> Vendor Name as per Pancard</legend>
+                    <input type="text" id="vendorpanname" name="vendorpanname" placeholder="Enter your pan name"  required>
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">4</span>Vendor Contact</legend>
+                    <input type="text" id="mobilenumber" name="mobilenumber" placeholder="Enter your mobile Number"  required>
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">5</span> Bank Account copy </legend>
+                    <div>
+                        <label for="bankAccountCopy1">Front:</label>
+                        <input type="file" id="bankAccountCopy1" name="bankAccountCopy1" accept="image/*" required placeholder="Front copy">
+                    </div>
+                </fieldset>
+                
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">6</span> Bank Account Number</legend>
+                    <input type="text" id="bankaccount" name="bankaccount" placeholder="Enter your bank number"  required>
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">7</span> Bank IFSC code</legend>
+                    <input type="text" id="ifsccode" name="ifsccode" placeholder="Enter IFSC">
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">8</span>GST Number and Office Address</legend>
+                    <div class="radio-container">
+                        <div>
+                            <label for="gst"><input type="radio" id="gst" name="gst_option" value="gst" onclick="toggleNumberAndAddress()"> GST Number</label>
+                        </div>
+                        <div>
+                            <label for="none"><input type="radio" id="none" name="gst_option" value="none" onclick="toggleNumberAndAddress()"> No</label>
+                        </div>
+                    </div>
+                    <div id="numberandaddress" style="display: none;">
+                        <label for="gstnumber">Number</label>
+                        <input type="text" id="gstInput" name="gst_value" placeholder="Enter GST Number">
+                        <label for="officeadress">Registered Office Address</label>
+                        <textarea type="text" id="address" name="address" placeholder="Type Your GST office address here"></textarea>
+                    </div>
+                </fieldset>
+                
+                
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">9</span> Adhar Card Number</legend>
+                    <input type="text" id="adhar" name="adhar" placeholder="Enter your adhar"  required>
+                </fieldset>
+
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">10</span> PAN card copy </legend>
+                    <div>
+                        <label for="pancardcopy1">Front:</label>
+                        <input type="file" id="pancardcopy1" name="pancardcopy1" accept="image/*" required placeholder="upload your pan copy Front">
+                    </div>
+                </fieldset>
+                
+                <fieldset class="fieldset-container">
+                    <legend><span class="number">11</span>PAN Card Number</legend>
+                    <input type="text" id="pannumber" name="pannumber" placeholder="Enter your PAN Number"  required>
+                </fieldset>
+
+                <fieldset>
+                    <legend><span class="number">12</span>Registered Vendor Office Address</legend>
+                    <textarea id="address" name="address" placeholder="Type Your Vendor office address here" required></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend><span class="number">13</span>Credit Period</legend>
+                    <select id="days" name="days" placeholder="Select Credit Period" required>
+                        <option value="">Select Your Credit Period</option>
+                        <option value="7 days">7 Days</option>
+                        <option value="15 days">15 Days</option>
+                        <option value="30 days">30 Days</option>
+                    </select>
+                </fieldset>
+                
+                <fieldset>
+                    <button id="submitBtn" type="button" onclick="submitVendorRegForm(event, '{% url 'update_spreadsheet_vendor_registration' %}')" >Submit</button>
+                </fieldset> 
+                
+                <fieldset id="submissionMessage" style="display: none;">
+                    <div>
+                        <p>Form Successfully submitted. Thanks for your response.</p>
+                        <p><a href="#" onclick="returnToForm()">Return to Form</a></p>
+                    </div>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static '/js/script.js' %}"></script>
+</body>
+</html>
